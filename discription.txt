@@ -1,0 +1,46 @@
+#header -
+  1.header title
+  2.short description
+  3.image
+
+#Our Services
+  0.id
+  1.Service name
+  2.short description
+  3.Service image
+  4.description
+
+#About
+  1.short description
+  2.project information
+    1.id
+    2.project title
+    3.project description
+    4.project image
+    
+  3.teams member
+    1.id
+    2.image
+    3.name
+    4.designation
+    5.email
+#blog
+  0.id
+  1.title
+  2.short description
+  3.image
+  4.create by name
+  5.create date
+  6.description
+
+#Testimonial
+    1.id
+    2.image
+    3.name
+    4.short description
+
+#contact
+    1.name
+    2.email
+    3.phone number
+    4.massage
