@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ route('header.update',['id' => $headers->id]) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                        @csrf 
                         <div class="form-group">
                             <label for="name">Title</label>
                             <input type="text" name="header_title" value="{{ $headers->header_title}}" class="form-control" id="name" placeholder="Header title">

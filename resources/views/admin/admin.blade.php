@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Digian - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('/') }}admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +19,16 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}admin/css/sb-admin-2.min.css" rel="stylesheet">
+    
+    
+
+    <!-- include summernote css/js -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 </head>
 
@@ -31,11 +41,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Digian Admin</div>
             </a>
 
             <!-- Divider -->
@@ -43,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,6 +73,23 @@
                         <h6 class="collapse-header">Custom headers:</h6>
                         <a class="collapse-item" href="{{ route('header.create') }}">Create</a>
                         <a class="collapse-item" href="{{ route('header.manage') }}">Manage</a>
+                       
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseth"
+                    aria-expanded="true" aria-controls="collapseth">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Service section</span>
+                </a>
+                <div id="collapseth" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Service:</h6>
+                        <a class="collapse-item" href="{{ route('service.create') }}">Add Service</a>
+                        <a class="collapse-item" href="{{ route('service.manage') }}">Manage Service</a>
                        
                     </div>
                 </div>
@@ -406,7 +433,13 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $('#summernote').summernote({
+          placeholder: 'Hello Bootstrap 4',
+          tabsize: 2,
+          height: 100
+        });
+      </script>
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('/') }}admin/vendor/jquery/jquery.min.js"></script>
     <script src="{{ asset('/') }}admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -423,6 +456,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('/') }}admin/js/demo/chart-area-demo.js"></script>
     <script src="{{ asset('/') }}admin/js/demo/chart-pie-demo.js"></script>
+    
 
 </body>
 

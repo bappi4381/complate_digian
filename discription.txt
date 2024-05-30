@@ -11,14 +11,9 @@
   4.description
 
 #About
-  1.short description
-  2.project information
-    1.id
-    2.project title
-    3.project description
-    4.project image
-    
-  3.teams member
+  
+ 
+  1.teams member
     1.id
     2.image
     3.name
@@ -44,3 +39,8 @@
     2.email
     3.phone number
     4.massage
+#project information
+    1.id
+    2.project title
+    3.project description
+    4.project image

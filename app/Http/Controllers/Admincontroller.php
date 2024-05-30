@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Header;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -86,4 +87,91 @@ class Admincontroller extends Controller
         $header->delete();
         return redirect('/header/manage')->with('message','Delete header information');
     }
+
+
+    //service section
+    public function serviceCreate()
+    {
+        return view('admin.service.add');
+    }
+    public function serviceStore(Request $request)
+    { 
+        if ($request->hasFile('service_image')) {
+            $file = $request->file('service_image');
+            $extension = $file->getClientOriginalExtension();
+            $imageName = 'header_' . time() . '.' . $extension;
+            $file->storeAs('public/service', $imageName);
+        
+            $service = new Service();
+            $service->service_name = $request->service_name;
+            $service->short_description = $request->short_description;
+            $service->service_image = $imageName;
+            $service->description = $request->description ;
+            $service->save();
+        
+            $request->session()->flash('status', 'Header information added successfully');
+            return redirect()->route('service.create');
+        } else {
+            // Handle case where no file is uploaded
+            $request->session()->flash('error', 'No image uploaded');
+            return redirect()->back();
+        }
+    }
+    
+
+    public function serviceManage()
+    {
+        $services = Service::all();
+        return view('admin.service.manage',compact('services'));
+    }
+
+
+    public function serviceEdit($id)
+    {
+        $service = Service::find($id);
+        return view('admin.service.edit',compact('service'));
+    }
+    public function serviceUpdate(Request $request,$id)
+    {
+     
+    // Validate the request
+   
+
+    // Find the header record by ID
+            $service = Service::findOrFail($id);
+
+            // Update other fields
+            $service->service_name = $request->service_name;
+            $service->short_description = $request->short_description;
+            $service->description = $request->description;
+            // Check if a new image is uploaded
+            if ($request->hasFile('service_image')) {
+                // Get the original file name
+                $imageName = $request->file('service_image')->getClientOriginalName();
+                // Store the new image
+                $request->file('service_image')->storeAs('public/service', $imageName);
+                // Update the image field
+                $service->service_image = $imageName;
+            }
+
+            // Save the changes
+            $service->save();
+
+            // Redirect back with a success message
+            return redirect()->back()->with('status', 'Service information updated successfully');
+
+    }
+
+    public function serviceRemove($id){
+        $service = Service::find($id);
+
+        if (file_exists( $service->image))
+        {
+            unlink($service->image);
+        }
+        $service->delete();
+        return redirect('/service/manage')->with('message','Delete service information');
+    }
+
+
 }

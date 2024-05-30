@@ -34,6 +34,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/header/update/{id}', [Admincontroller::class,'headerupdate'])->name('header.update');
     Route::get('/header/remove/{id}', [Admincontroller::class,'headerRemove'])->name('header.remove');
 
+    Route::get('/service/create', [Admincontroller::class,'serviceCreate'])->name('service.create');
+    Route::post('/service/add', [Admincontroller::class,'serviceStore'])->name('service.store');
+    Route::get('/service/manage', [Admincontroller::class,'serviceManage'])->name('service.manage');
+    Route::get('/service/edit/{id}', [Admincontroller::class,'serviceEdit'])->name('service.edit');
+    Route::post('/service/update/{id}', [Admincontroller::class,'serviceupdate'])->name('service.update');
+    Route::get('/service/remove/{id}', [Admincontroller::class,'serviceRemove'])->name('service.remove');
+
+
+
 });
 
 require __DIR__.'/auth.php';

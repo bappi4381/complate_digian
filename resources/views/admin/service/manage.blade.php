@@ -18,22 +18,24 @@
                         <tr>
                             <th>Id</th>
                             <th>Title</th>
-                            <th>Description</th>
+                            <th>About</th>
                             <th>Image</th>
+                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ($headers as $header )
+                    @foreach ($services as $service )
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{ $header->header_title }}</td>
-                        <td>{{ $header->short_description }}</td>
-                        <td><img src="{{asset('storage/header/'.$header->image) }}"width ="70px"alt=""></td>
+                        <td>{{ $service->service_name }}</td>
+                        <td>{{ $service->short_description }}</td>
+                        <td>{!! $service->description !!}</td>
+                        <td><img src="{{asset('storage/service/'.$service->service_image) }}"width ="70px"alt=""></td>
                         <td>
-                            <a href="{{ route('header.edit',['id'=> $header->id])}}" class="btn btn-info btn-circle">
+                            <a href="{{ route('service.edit',['id'=>$service->id]) }}" class="btn btn-info btn-circle">
                                 <i class="fas fa-info-circle"></i>
                             </a>
-                            <a href="{{ route('header.remove',['id'=> $header->id])}}" class="btn btn-danger btn-circle">
+                            <a href="" class="btn btn-danger btn-circle">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
