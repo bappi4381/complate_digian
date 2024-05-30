@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admincontroller;
+use App\Http\Controllers\AboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,8 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/service/update/{id}', [Admincontroller::class,'serviceupdate'])->name('service.update');
     Route::get('/service/remove/{id}', [Admincontroller::class,'serviceRemove'])->name('service.remove');
 
+    //teams
 
-
+    Route::get('/teams/create', [AboutController::class,'create'])->name('team.create');
+    Route::post('/teams/add', [AboutController::class,'store'])->name('team.store');
+    Route::get('/teams/manage', [AboutController::class,'manage'])->name('team.manage');
+    Route::get('/team/edit/{id}', [AboutController::class,'teamEdit'])->name('team.edit');
+    Route::post('/team/update/{id}', [AboutController::class,'teamupdate'])->name('team.update');
+    Route::get('/team/remove/{id}', [AboutController::class,'teamRemove'])->name('team.remove');
 });
 
 require __DIR__.'/auth.php';
