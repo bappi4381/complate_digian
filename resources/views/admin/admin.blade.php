@@ -119,7 +119,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom blog:</h6>
                         <a class="collapse-item" href="{{ route('blog.create') }}">create Blog</a>
-                        <a class="collapse-item" href="">Manage Blog</a>
+                        <a class="collapse-item" href="{{ route('blog.manage') }}">Manage Blog</a>
                        
                     </div>
                 </div>

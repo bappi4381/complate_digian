@@ -55,6 +55,10 @@ Route::middleware('auth')->group(function () {
     //blog
     Route::get('/blogs/create', [BlogsController::class,'create'])->name('blog.create');
     Route::post('/blogs/store', [BlogsController::class,'store'])->name('blog.store');
+    Route::get('/blogs/manage', [BlogsController::class,'manage'])->name('blog.manage');
+    Route::get('/blogs/edit/{id}', [BlogsController::class,'edit'])->name('blog.edit');
+    Route::post('/blogs/update/{id}', [BlogsController::class,'update'])->name('blog.update');
+    Route::get('/blogs/remove/{id}', [BlogsController::class,'remove'])->name('blog.remove');
     Route::post('/blogs/catagory', [BlogsController::class,'catagoyCreate'])->name('blog.catagory');//catagory add
     Route::post('/blogs/catagory/manage', [BlogsController::class,'catagoyManage'])->name('catagori.manage');//catagory manage
     Route::get('/blogs/catagory/{id}', [BlogsController::class,'catagoriRemove'])->name('catagory.remove');//catagory remove
