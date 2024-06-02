@@ -20,6 +20,8 @@
     4.designation
     5.email
 #blog
+--blog catagory id
+--blog catagory name
   0.id
   1.title
   2.short description
@@ -39,6 +41,7 @@
     2.email
     3.phone number
     4.massage
+    
 #project information
     1.id
     2.project title

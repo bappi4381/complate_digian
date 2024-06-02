@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/team/edit/{id}', [AboutController::class,'teamEdit'])->name('team.edit');
     Route::post('/team/update/{id}', [AboutController::class,'teamupdate'])->name('team.update');
     Route::get('/team/remove/{id}', [AboutController::class,'teamRemove'])->name('team.remove');
+
+    //blog
+    Route::get('/blogs/create', [BlogsController::class,'create'])->name('blog.create');
+    Route::post('/blogs/store', [BlogsController::class,'store'])->name('blog.store');
+    Route::post('/blogs/catagory', [BlogsController::class,'catagoyCreate'])->name('blog.catagory');//catagory add
+    Route::post('/blogs/catagory/manage', [BlogsController::class,'catagoyManage'])->name('catagori.manage');//catagory manage
+    Route::get('/blogs/catagory/{id}', [BlogsController::class,'catagoriRemove'])->name('catagory.remove');//catagory remove
+
 });
 
 require __DIR__.'/auth.php';

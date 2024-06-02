@@ -109,6 +109,21 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blog"
+                    aria-expanded="true" aria-controls="blog">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Blog section</span>
+                </a>
+                <div id="blog" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom blog:</h6>
+                        <a class="collapse-item" href="{{ route('blog.create') }}">create Blog</a>
+                        <a class="collapse-item" href="">Manage Blog</a>
+                       
+                    </div>
+                </div>
+            </li>
             
             <hr class="sidebar-divider">
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -451,7 +466,6 @@
     </div>
     <script>
         $('#summernote').summernote({
-          placeholder: 'Hello Bootstrap 4',
           tabsize: 2,
           height: 100
         });
