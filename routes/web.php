@@ -6,6 +6,7 @@ use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\TestimonialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +73,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects/edit/{id}',[ProjectsController::class,'edit'])->name('project.edit');
     Route::post('/projects/update/{id}',[ProjectsController::class,'update'])->name('project.update');
     Route::get('/projects/remove/{id}',[ProjectsController::class,'remove'])->name('project.remove');
+
+
+    //test
+
+    Route::get('/test/create', [TestimonialController::class,'create'])->name('test.create');
+    Route::post('/test/store', [TestimonialController::class,'store'])->name('test.store');
+    Route::get('/test/manage', [TestimonialController::class,'manage'])->name('test.manage');
+    Route::get('/test/edit/{id}',[TestimonialController::class,'edit'])->name('test.edit');
+    Route::post('/test/update/{id}',[TestimonialController::class,'update'])->name('test.update');
+    Route::get('/test/remove/{id}',[TestimonialController::class,'remove'])->name('test.remove');
 });
 
 require __DIR__.'/auth.php';
