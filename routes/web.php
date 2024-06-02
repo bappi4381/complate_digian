@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\ProjectsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +64,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/blogs/catagory/manage', [BlogsController::class,'catagoyManage'])->name('catagori.manage');//catagory manage
     Route::get('/blogs/catagory/{id}', [BlogsController::class,'catagoriRemove'])->name('catagory.remove');//catagory remove
 
+    //projects
+
+    Route::get('/projects/create', [ProjectsController::class,'create'])->name('project.create');
+    Route::post('/projects/store', [ProjectsController::class,'store'])->name('project.store');
+    Route::get('/projects/manage', [ProjectsController::class,'manage'])->name('project.manage');
+    Route::get('/projects/edit/{id}',[ProjectsController::class,'edit'])->name('project.edit');
+    Route::post('/projects/update/{id}',[ProjectsController::class,'update'])->name('project.update');
+    Route::get('/projects/remove/{id}',[ProjectsController::class,'remove'])->name('project.remove');
 });
 
 require __DIR__.'/auth.php';
