@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Header;
 use App\Models\Service;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -171,6 +172,18 @@ class Admincontroller extends Controller
         }
         $service->delete();
         return redirect('/service/manage')->with('message','Delete service information');
+    }
+
+    //contact manage and remove
+
+    public function contactManage(){
+        $contacts = Contact::all();
+        return view('admin.contact.manage', compact('contacts'));
+    }
+    public function contactRemove($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect('/contact/manage');
     }
 
 

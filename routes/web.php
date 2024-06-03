@@ -7,6 +7,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,13 @@ use App\Http\Controllers\TestimonialController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('front.index.index');
+});
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/service', [HomeController::class, 'service'])->name('view.service');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact/submit', [HomeController::class, 'homeContact'])->name('home.contact');
 
 Route::get('/admin/login', function () {
     return view('admin.login');
@@ -83,6 +92,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/test/edit/{id}',[TestimonialController::class,'edit'])->name('test.edit');
     Route::post('/test/update/{id}',[TestimonialController::class,'update'])->name('test.update');
     Route::get('/test/remove/{id}',[TestimonialController::class,'remove'])->name('test.remove');
+
+    //contact
+    Route::get('/contact/manage', [Admincontroller::class,'contactManage'])->name('contact.manage');
+    Route::get('/contact/remove/{id}',[Admincontroller::class,'contactRemove'])->name('contact.remove');
 });
 
 require __DIR__.'/auth.php';

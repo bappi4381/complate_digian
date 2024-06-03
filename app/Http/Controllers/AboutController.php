@@ -7,6 +7,7 @@ use App\Models\Team;
 
 class AboutController extends Controller
 {
+    
     public function create(){
         return view('admin.teams.addTeam');
     }

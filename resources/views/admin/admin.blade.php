@@ -137,7 +137,7 @@
                 <div id="contact" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Contact:</h6>
-                        <a class="collapse-item" href="">Manage Contact</a>
+                        <a class="collapse-item" href="{{ route('contact.manage') }}">Manage Contact</a>
                     </div>
                 </div>
             </li>

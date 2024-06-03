@@ -3,13 +3,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Manage All Header Information</h1>
+    <h1 class="h3 mb-2 text-gray-800">Manage All Contact</h1>
     
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Header Information</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Contact</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,25 +17,22 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Title</th>
-                            <th>About</th>
-                            <th>Image</th>
-                            <th>Description</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Massage</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ($services as $service )
+                    @foreach ($contacts as $contact )
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{ $service->service_name }}</td>
-                        <td>{{ $service->short_description }}</td>
-                        <td>{!! $service->description !!}</td>
-                        <td><img src="{{asset('storage/service/'.$service->service_image) }}"width ="70px"alt=""></td>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->phone_number }}</td>
+                        <td>{{ $contact->message}}</td>
                         <td>
-                            <a href="{{ route('service.edit',['id'=>$service->id]) }}" class="btn btn-info btn-circle">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
-                            <a href="{{ route('service.remove',['id'=>$service->id]) }}" class="btn btn-danger btn-circle">
+                            <a href="{{ route('contact.remove',['id'=>$contact->id]) }}" class="btn btn-danger btn-circle">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
