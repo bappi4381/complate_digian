@@ -102,7 +102,7 @@
 
             Our journey began with a simple yet ambitious goal: to bridge the gap between complex technical solutions and the real-world needs of our clients. Since our inception, we have stayed true to this vision, continuously pushing the boundaries of what's possible in the realm of IT services.
           </p>
-          <a href="">
+          <a href="{{ route('view.about') }}">
             Read More
           </a>
         </div>

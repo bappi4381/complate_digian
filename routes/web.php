@@ -24,8 +24,10 @@ Route::get('/', function () {
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('/service', [HomeController::class, 'service'])->name('view.service');
+Route::get('/about', [HomeController::class, 'about'])->name('view.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact/submit', [HomeController::class, 'homeContact'])->name('home.contact');
+
 
 Route::get('/admin/login', function () {
     return view('admin.login');

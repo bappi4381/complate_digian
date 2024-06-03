@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Header;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\Team;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,10 @@ class HomeController extends Controller
     public function service(){
         $services = Service::all();
         return view('front.service.service',compact('services'));
+    }
+    public function about(){
+        $teams = Team::all();
+        return view('front.about.about',compact('teams')); 
     }
 
     //contact
