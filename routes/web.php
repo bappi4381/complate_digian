@@ -19,14 +19,13 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('front.index.index');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('/service', [HomeController::class, 'service'])->name('view.service');
 Route::get('/about', [HomeController::class, 'about'])->name('view.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact/submit', [HomeController::class, 'homeContact'])->name('home.contact');
+Route::post('/contact/request', [HomeController::class, 'indexContact'])->name('index.contact');
 
 
 Route::get('/admin/login', function () {

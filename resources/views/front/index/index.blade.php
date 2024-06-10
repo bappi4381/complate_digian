@@ -186,21 +186,25 @@
       </h2>
     </div>
   </div>
+  
+    
+ 
   <div id="customCarousel2" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      @foreach ($testes as $key => $test )
+      <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
         <div class="container">
           <div class="row">
             <div class="col-md-10 mx-auto">
               <div class="box">
                 <div class="img-box">
-                  <img src="images/client.jpg" alt="">
+                  <img src="{{asset('storage/testes/'.$test->image)}}" alt="">
                 </div>
                 <div class="detail-box">
                   <div class="client_info">
                     <div class="client_name">
                       <h5>
-                        Morojink
+                        {{ $test->name }}
                       </h5>
                       <h6>
                         Customer
@@ -208,14 +212,8 @@
                     </div>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugia
+                  <p class="text-white">
+                    {!! $test ->short_description!!}
                   </p>
                 </div>
               </div>
@@ -223,81 +221,13 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10 mx-auto">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/client.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <div class="client_info">
-                    <div class="client_name">
-                      <h5>
-                        Morojink
-                      </h5>
-                      <h6>
-                        Customer
-                      </h6>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugia
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10 mx-auto">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/client.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <div class="client_info">
-                    <div class="client_name">
-                      <h5>
-                        Morojink
-                      </h5>
-                      <h6>
-                        Customer
-                      </h6>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugia
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
     <ol class="carousel-indicators">
-      <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
-      <li data-target="#customCarousel2" data-slide-to="1"></li>
-      <li data-target="#customCarousel2" data-slide-to="2"></li>
+      @foreach ($testes as $key => $test)
+        <li data-target="#customCarousel2"data-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></li>
+      @endforeach
+      
     </ol>
   </div>
 </section>
@@ -317,25 +247,26 @@
               Request A Call back
             </h2>
           </div>
-          <form action="">
-            <div>
-              <input type="text" placeholder="Full Name " />
-            </div>
-            <div>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div>
-              <input type="text" placeholder="Phone number" />
-            </div>
-            <div>
-              <input type="text" class="message-box" placeholder="Message" />
-            </div>
-            <div class="d-flex ">
-              <button>
-                SEND
-              </button>
-            </div>
-          </form>
+          <form action="{{ route('index.contact') }}" method="post" >
+            @csrf
+        <div>
+            <input type="text" name="name"placeholder="Full Name" />
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Email" />
+        </div>
+        <div>
+            <input type="text" name="phone_number" placeholder="Phone number" />
+        </div>
+        <div>
+            <input type="text" name="message" class="message-box" placeholder="Message" />
+        </div>
+        <div class="d-flex ">
+            <button type="submit">
+            SEND
+            </button>
+        </div>
+        </form>
         </div>
       </div>
       <div class="col-md-6 col-lg-7 px-0">
