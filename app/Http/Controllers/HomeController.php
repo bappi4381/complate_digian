@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Service;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\Project;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,8 @@ class HomeController extends Controller
         $headers = Header::all();
         $services = Service::latest()->take(4)->get();
         $testes = Testimonial::latest()->take(3)->get();
-        return view('front.index.index',compact('headers','services','testes'));
+        $projects = Project::latest()->take(2)->get();
+        return view('front.index.index',compact('headers','services','testes','projects'));
     }
     public function indexContact(Request $request){
         $contact = new Contact();

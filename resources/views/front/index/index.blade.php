@@ -129,17 +129,19 @@
       </h2>
     </div>
     <div class="row">
+      @foreach ($projects as $project )
       <div class="col-md-6">
         <div class="box">
           <div class="img-box">
-            <img src="images/case-1.jpg" alt="">
+            <img src="{{asset('storage/projects/'.$project->image)}}" alt="">
           </div>
           <div class="detail-box">
             <h5>
-              Sit amet consectetur adipisicing elit
+              {{ \Illuminate\Support\Str::limit($project->project_title, $limit = 25, $end = '...') }} 
             </h5>
             <p>
-              Alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              {!! \Illuminate\Support\Str::limit(strip_tags($project->project_description), $limit = 125, $end = '...') !!}
+             
             </p>
             <a href="">
               <span>
@@ -150,27 +152,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="box">
-          <div class="img-box">
-            <img src="images/case-2.jpg" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              Excepturi placeat nihil eos maxime
-            </h5>
-            <p>
-              Alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-            </p>
-            <a href="">
-              <span>
-                Read More
-              </span>
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+      @endforeach
+     
+      
     </div>
   </div>
 </section>
