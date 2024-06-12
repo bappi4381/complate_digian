@@ -55,7 +55,7 @@
         <div class="col-md-6 col-lg-3">
             <div class="box">
               <div class="img-box">
-                <img src="{{asset('storage/service/'.$service->service_image)}}" alt="">
+                <img src="{{asset('storage/service/'.$service->service_image)}}" alt="" style="width:100%; max-height: 250px !important;">
               </div>
               <div class="detail-box">
                 <h5>
