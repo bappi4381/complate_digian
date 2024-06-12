@@ -19,6 +19,26 @@ class HomeController extends Controller
         $projects = Project::latest()->take(2)->get();
         return view('front.index.index',compact('headers','services','testes','projects'));
     }
+    public function details($id){
+        $project = Project::find($id);
+    
+        if (!$project) {
+            // Handle the case where the project is not found, maybe redirect or show an error message
+            return abort(404);
+        }
+    
+        return view('front.details.details', ['project' => $project]);
+    }
+    public function servicedetails($id){
+        $service = Service::find($id);
+    
+        if (!$service) {
+            // Handle the case where the project is not found, maybe redirect or show an error message
+            return abort(404);
+        }
+    
+        return view('front.servicedetails.servicedetails', ['service' => $service]);
+    }
     public function indexContact(Request $request){
         $contact = new Contact();
             $contact->name = $request->name;

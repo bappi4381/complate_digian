@@ -26,7 +26,8 @@ Route::get('/about', [HomeController::class, 'about'])->name('view.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact/submit', [HomeController::class, 'homeContact'])->name('home.contact');
 Route::post('/contact/request', [HomeController::class, 'indexContact'])->name('index.contact');
-
+Route::get('/project/details/{id}', [HomeController::class, 'details'])->name('blog.show');
+Route::get('/service/details/{id}', [HomeController::class, 'servicedetails'])->name('service.show');
 
 Route::get('/admin/login', function () {
     return view('admin.login');

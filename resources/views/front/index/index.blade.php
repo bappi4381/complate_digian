@@ -64,7 +64,7 @@
                 <p>
                     {{ \Illuminate\Support\Str::limit($service->short_description, $limit = 35, $end = '...') }}
                 </p>
-                <a href="">
+                <a href="{{ route('service.show', $service->id) }}">
                   <span>
                     Read More
                   </span>
@@ -143,7 +143,7 @@
               {!! \Illuminate\Support\Str::limit(strip_tags($project->project_description), $limit = 125, $end = '...') !!}
              
             </p>
-            <a href="">
+            <a href="{{ route('blog.show', $project->id) }}">
               <span>
                 Read More
               </span>
