@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,8 @@ Route::middleware('auth')->group(function () {
     //contact
     Route::get('/contact/manage', [Admincontroller::class,'contactManage'])->name('contact.manage');
     Route::get('/contact/remove/{id}',[Admincontroller::class,'contactRemove'])->name('contact.remove');
+
+    Route::get('/generate-pdf', [ReportController::class, 'generatePDF'])->name('generate.pdf');
 });
 
 require __DIR__.'/auth.php';
